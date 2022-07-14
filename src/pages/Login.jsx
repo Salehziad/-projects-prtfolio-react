@@ -20,10 +20,10 @@ export default function Login(props) {
     const [user,setUser]=useState('');
     const [username,setUsername]=useState('');
     const [trueEmail,setTrueEmail]=useState(true);
-    // const [firstName, setFirstName] = useState('');
+    const [firstName, setFirstName] = useState('');
     const [password, setPassword] = useState('');
-    // const [password1, setPassword1] = useState('');
-    // const [passwordShown, setPasswordShown] = useState(false);
+    const [password1, setPassword1] = useState('');
+    const [passwordShown, setPasswordShown] = useState(false);
     const [truePassword, setTruePassword] = useState(true);
     const handleSubmit = event => {
     // console.log('handleSubmit ran');
@@ -39,7 +39,7 @@ export default function Login(props) {
             displayname:username,
             password:password
         }
-        // console.log(data);
+        console.log(data);
         handleAddFav(data);
     
   };
@@ -91,7 +91,7 @@ export default function Login(props) {
               <div className="or">OR</div>
               </div>
             <div className="right">
-                <form  onSubmit={handleSubmit}>
+                <form  onSubmit={handleSubmit} className="right">
                 <input 
                     type="tex"
                     placeholder='username'
@@ -105,14 +105,13 @@ export default function Login(props) {
                     placeholder='Password'
                     value={password}  onChange={event => setPassword(event.target.value)}
                     required={true}
-                    />``
+                    />
                     <button type='submit' className='submit-btn'>Sign in</button>
                 </form>
                 {user?props.sendToParent(user):null}
                 {user?<Navigate to ='/'></Navigate>:null}
-                <div>
-                    <p> new user? siggn up here</p>
-                    <button>{<Link className='link' to='/sinUp'>Sign up</Link>}</button>
+                <div className='sign-up-redirect'>
+                    <p> new user? sign up <Link className='link-title' to='/sinUp'>here</Link></p>
                 </div>
             </div>
         </div>

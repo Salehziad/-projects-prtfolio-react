@@ -91,7 +91,7 @@ catch (error) {
         <h1 className="title-login">Choose a Login Method</h1>
         <div className="wrapper">
             <div className="right">
-                <form  onSubmit={handleSubmit}>
+                <form  onSubmit={handleSubmit} className="right">
                 <input 
                     type="email"
                     placeholder='email'
@@ -127,9 +127,8 @@ catch (error) {
                         userEmail?<div>the email is already used</div>:<div></div>
                     }
                 </form>
-                <div>
-                    <p> have account? log in  here</p>
-                    <button>{<Link className='link' to='/login'>Login</Link>}</button>
+                <div className='sign-up-redirect'>
+                    <p> have account? log in <Link className='link-title' to='/login'>here</Link></p>
                 </div>
             </div>
         </div>
