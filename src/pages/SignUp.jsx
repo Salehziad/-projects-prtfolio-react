@@ -1,20 +1,12 @@
 
 import React from 'react'
-import google from'../assest/google.png'
-import facebook from'../assest/facebook.png'
-import github from'../assest/github.png'
+// import google from'../assest/google.png'
+// import facebook from'../assest/facebook.png'
+// import github from'../assest/github.png'
 import {useState} from 'react';
 import { Link, Navigate } from 'react-router-dom';
 export default function SignUp() {
-    const googleAuth=()=>{
-        window.open("https://projects-prtfolio-server.herokuapp.com/auth/google", "_self");
-    }
-    const githubAuth=()=>{
-        window.open("https://projects-prtfolio-server.herokuapp.com/auth/github", "_self");
-    }
-    const facebookbAuth=()=>{
-        window.open("https://projects-prtfolio-server.herokuapp.com/auth/facebook", "_self");
-    }
+
     const [email,setEmail]=useState('');
     const [trueEmail,setTrueEmail]=useState(false);
     const [userEmail,setUserEmail]=useState(false);

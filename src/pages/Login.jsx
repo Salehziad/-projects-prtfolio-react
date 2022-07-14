@@ -20,10 +20,10 @@ export default function Login(props) {
     const [user,setUser]=useState('');
     const [username,setUsername]=useState('');
     const [trueEmail,setTrueEmail]=useState(true);
-    const [firstName, setFirstName] = useState('');
+    // const [firstName, setFirstName] = useState('');
     const [password, setPassword] = useState('');
-    const [password1, setPassword1] = useState('');
-    const [passwordShown, setPasswordShown] = useState(false);
+    // const [password1, setPassword1] = useState('');
+    // const [passwordShown, setPasswordShown] = useState(false);
     const [truePassword, setTruePassword] = useState(true);
     const handleSubmit = event => {
     // console.log('handleSubmit ran');
@@ -101,7 +101,7 @@ export default function Login(props) {
                     />
                     <span>{trueEmail?"":"please enter a valid email"}</span>
                    <input 
-                    type={passwordShown?"text":"password"}
+                    type="password"
                     placeholder='Password'
                     value={password}  onChange={event => setPassword(event.target.value)}
                     required={true}

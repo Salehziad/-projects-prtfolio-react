@@ -45,7 +45,7 @@ const App=()=>{
     };
     setUser1(User);
     getUser();
-  }, []);
+  },[]);
   // console.log("hhhhhhhhhhhhhhhhhhhhhhhh",isParentData)
   return <>
   <BrowserRouter>
