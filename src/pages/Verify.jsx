@@ -20,7 +20,7 @@ export default function Verify() {
   async function handleAddFav(data) {
     console.log('ssss',data);
     // e.preventDefault();
-    let url = "https://projects-prtfolio-server.herokuapp.com/auth/verify";
+    let url = "http://localhost:5000/auth/verify";
     try {
       
       let response = await fetch(url, {

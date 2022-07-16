@@ -252,6 +252,16 @@
     font-size: 17px;
   }
 
+  .Signinlogs{
+    display: flex;
+    flex-direction: row;
+  }
+  .column{
+    flex: 1;
+  }
+  .column ul{
+    list-style-type: none;
+  }
   @media screen and (max-width: 992px) {
     .card {
       width: 100%;
@@ -286,3 +296,9 @@
       width: 300px;
     }
   }
+
+
+
+
+
+  

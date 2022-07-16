@@ -8,11 +8,11 @@ export default function Login(props) {
     // console.log({props});
     
     const googleAuth=()=>{
-        // window.open("http://localhost:5000/auth/google", "_self");
-        window.open("https://projects-prtfolio-server.herokuapp.com/auth/google", "_self");
+        window.open("http://localhost:5000/auth/google", "_self");
+        // window.open("https://projects-prtfolio-server.herokuapp.com/auth/google", "_self");
     }
     const githubAuth=()=>{
-        window.open("https://projects-prtfolio-server.herokuapp.com/auth/github", "_self");
+        window.open("http://localhost:5000/auth/github", "_self");
     }
     const facebookbAuth=()=>{
         window.open("https://projects-prtfolio-server.herokuapp.com/auth/facebook", "_self");
@@ -44,16 +44,9 @@ export default function Login(props) {
     
   };
   async function handleAddFav(data) {
-    // console.log('ssss',data);
-    // e.preventDefault();
-    let url = "https://projects-prtfolio-server.herokuapp.com/auth/signin";
-  
-    
-    // let data = {
-    //     name:"saleh"
-    // }
-  
-  
+    // data.preventDefault();
+    let url = "http://localhost:5000/auth/signin";
+    // https://projects-prtfolio-server.herokuapp.com
   let response = await fetch(url, {
     method: 'POST',
     headers: {
@@ -64,7 +57,7 @@ export default function Login(props) {
   
   let addedRecipe = await response.json();
   if(addedRecipe) setUser(addedRecipe);
-//   console.log("addedRecipe", addedRecipe);
+  console.log("addedRecipe", addedRecipe);
 }
 
 

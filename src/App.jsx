@@ -8,13 +8,16 @@ import { useEffect } from "react";
 import { useState } from "react";
 import SignUp from "./pages/SignUp";
 import Verify from "./pages/Verify";
+import Dashboard from "./pages/Dashboard";
+import Signinlogs from "./pages/Signinlogs";
+import SignUpLogs from "./pages/SignUpLogs";
 const App=()=>{
   const [user, setUser] = useState(null);
+  console.log(user);
   const [User,setUser1] = useState('');
   useEffect(() => {
     const getUser = () => {
-      // http://localhost:5000/auth/login/success"
-      fetch("https://projects-prtfolio-server.herokuapp.com/auth/login/success", {
+      fetch("http://localhost:5000/auth/login/success", {
         method: "GET",
         credentials: "include",
         headers: {
@@ -24,29 +27,19 @@ const App=()=>{
         },
       })
         .then((response) => {
-          console.log(
-            "ggggggggggggggggggggggggggggggg"
-          );
           if (response.status === 200) return response.json();
           throw new Error("authentication has been failed!");
         })
         .then((resObject) => {
-          console.log(
-            "ggggggggggggggggggggggggggggggg"
-          );
           setUser(resObject.user);
         })
         .catch((err) => {
-          console.log(
-            "ggggggggggggggggggggggggggggggg"
-          );
           console.log(err);
         });
     };
-    setUser1(User);
     getUser();
-  },[]);
-  // console.log("hhhhhhhhhhhhhhhhhhhhhhhh",isParentData)
+  }, []);
+  // console.log("hhhhhhhhhhhhhhhhhhhhhhhh",User)
   return <>
   <BrowserRouter>
   <Navbar user={user} User={User}/>
@@ -56,6 +49,21 @@ const App=()=>{
     <Route path="/post/:id" element={user||User ? <Post/> : <Navigate to='/login'></Navigate>}/>
     <Route path="/sinUp" element={<SignUp/>}/>
     <Route path="/verify" element={<Verify/>}/>
+    <Route path="/dashboard" element={
+      User?
+      User.user.role==='admin'?<Dashboard/>:null
+      :null
+    }/>
+    <Route path="/signin-logs" element={
+      User?
+      User.user.role==='admin'?<Signinlogs/>:null
+      :null
+    }/>
+    <Route path="/signup-logs" element={
+      User?
+      User.user.role==='admin'?<SignUpLogs/>:null
+      :null
+    }/>
   </Routes>
   </BrowserRouter>
   </>

@@ -57,7 +57,7 @@ export default function SignUp() {
     // e.preventDefault();
     try {
         
-        let url = "https://projects-prtfolio-server.herokuapp.com/auth/signup";
+        let url = "http://localhost:5000/auth/signup";
         let response = await fetch(url, {
             method: 'POST',
         headers: {

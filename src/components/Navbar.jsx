@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 // import img from '../assest/logo.png'
 export default function Navbar({user,User}) {
   const logout=()=>{
-    // window.open("http://localhost:5000/auth/logout","_self");
+    window.open("http://localhost:5000/auth/logout","_self");
     // window.open("https://projects-prtfolio-server.herokuapp.com/auth/logout","_self");
-    window.open("https://projects-prtfolio-server.herokuapp.com/auth/logout","_self");
+    // window.open("https://projects-prtfolio-server.herokuapp.com/auth/logout","_self");
 
 
     // var cookies = document.cookie.split(";");
@@ -17,8 +17,13 @@ export default function Navbar({user,User}) {
     //     document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     // }
   }
-  if(User)console.log(User)
+  if(User)console.log(';dddddddddddddddddddddddddddddddd',User.user.displayName)
   // console.log(":ssssssssssssssssssssss",User);
+  const navigate=useNavigate()
+  const navigateHome = () => {
+    // 👇️ navigate to /
+    navigate('/dashboard');
+  };
   return (
     <div className='navbar'>
         <span className='navbar-logo'>
@@ -46,11 +51,19 @@ export default function Navbar({user,User}) {
               className="avatar"
             />
             </li>
-            <li className='list-group'>{User.user.username}</li>
+            <li className='list-group'>{User.user.displayName}</li>
             <li className='list-group' onClick={logout}>Logout</li>
           </ul>
           ) 
           :(<Link className='link' to='/login'>Login</Link>)
+        }
+        {
+          User?
+          User.user.role=== 'admin'?<div>
+            <button className='link' onClick={navigateHome}>Dashboard</button>
+            {/* <Link className='link'>Dashboard</Link> */}
+          </div> :null
+          :null
         }
     </div>
   )
