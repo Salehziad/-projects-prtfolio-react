@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/full-auth-project-react/static/css/main.c93d0b1f.css",
+    "main.js": "/full-auth-project-react/static/js/main.79230f80.js",
+    "index.html": "/full-auth-project-react/index.html",
+    "main.c93d0b1f.css.map": "/full-auth-project-react/static/css/main.c93d0b1f.css.map",
+    "main.79230f80.js.map": "/full-auth-project-react/static/js/main.79230f80.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c93d0b1f.css",
+    "static/js/main.79230f80.js"
+  ]
+}
