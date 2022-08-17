@@ -1,26 +1,22 @@
 import React from 'react'
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
 import { Navigate } from "react-router-dom";
 export default function Verify() {
   const [code,setCode]=useState('');
   const [verify,setVerify]=useState();
-  const [user,setUser]=useState(''); 
+  const [user, setUser] = useState(''); 
+  
   const handleSubmit=event=>{
     event.preventDefault();
-    console.log("done");
-    console.log(code);
     let data={
       code:code,
     }
-    handleAddFav(data);
+    handleVerify(data);
     setCode('');
   }
-  async function handleAddFav(data) {
-    console.log('ssss',data);
-    // e.preventDefault();
-    let url = "http://localhost:5000/auth/verify";
+  async function handleVerify(data) {
+
+    let url = "https://full-auth-project.herokuapp.com/auth/verify";
     try {
       
       let response = await fetch(url, {
@@ -32,10 +28,8 @@ export default function Verify() {
       })
       
       let userInfo = await response.json();
-      // if (userInfo) setSignup(true);
       setUser(userInfo); 
       setVerify(true);
-      // console.log("userInfo", userInfo);
     } catch (error) {
       setVerify(false)
      console.log(error); 

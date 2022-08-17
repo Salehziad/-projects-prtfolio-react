@@ -1,70 +1,43 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-// import img from '../assest/logo.png'
-export default function Navbar({user,User}) {
-  const logout=()=>{
-    window.open("http://localhost:5000/auth/logout","_self");
-    // window.open("https://projects-prtfolio-server.herokuapp.com/auth/logout","_self");
-    // window.open("https://projects-prtfolio-server.herokuapp.com/auth/logout","_self");
+import {Link} from 'react-router-dom'
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+export default function Navbar({user, user1}) {
+    const logout = () => {
+        window.open("https://full-auth-project.herokuapp.com/auth/logout", "_self");
+        // window.open("http://localhost:5000/auth/logout", "_self");
+        cookies.remove('token')
+    }
+    return (
+        <div className='navbar'>
+            <span className='navbar-logo'>
+                <Link to='/' className='link'>saleh app</Link>
+            </span>
+            {user1
+                ? (
 
-
-    // var cookies = document.cookie.split(";");
-    // // console.log(cookies);
-    // for (var i = 0; i < cookies.length; i++) {
-    //     var cookie = cookies[i];
-    //     var eqPos = cookie.indexOf("=");
-    //     var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-    //     document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    // }
-  }
-  if(User)console.log(';dddddddddddddddddddddddddddddddd',User.user.displayName)
-  // console.log(":ssssssssssssssssssssss",User);
-  const navigate=useNavigate()
-  const navigateHome = () => {
-    // 👇️ navigate to /
-    navigate('/dashboard');
-  };
-  return (
-    <div className='navbar'>
-        <span className='navbar-logo'>
-          <Link to='/' className='link'>saleh app</Link>
-        </span>
-        {user?(
-
-          <ul className='list'>
-            <li className='list-group'>
-            <img
-              src={user.photos[0].value}
-              alt=""
-              className="avatar"
-            />
-            </li>
-            <li className='list-group'>{user.displayName}</li>
-            <li className='list-group' onClick={logout}>Logout</li>
-          </ul>
-          ):User?(
-            <ul className='list'>
-            <li className='list-group'>
-            <img
-              src={User.user.photos}
-              alt=""
-              className="avatar"
-            />
-            </li>
-            <li className='list-group'>{User.user.displayName}</li>
-            <li className='list-group' onClick={logout}>Logout</li>
-          </ul>
-          ) 
-          :(<Link className='link' to='/login'>Login</Link>)
-        }
-        {
-          User?
-          User.user.role=== 'admin'?<div>
-            <button className='link' onClick={navigateHome}>Dashboard</button>
-            {/* <Link className='link'>Dashboard</Link> */}
-          </div> :null
-          :null
-        }
-    </div>
-  )
+                    <ul className='list'>
+                        <li className='list-group'>
+                            <img src={user.photos[0].value} alt="" className="avatar"/>
+                        </li>
+                        <li className='list-group'>{user.displayName}</li>
+                        <li className='list-group' onClick={logout}>Logout</li>
+                    </ul>
+                )
+                : user
+                    ? (
+                        <ul className='list'>
+                            <li className='list-group'>
+                                <img src={user.photos} alt="" className="avatar"/>
+                            </li>
+                            <li className='list-group'>{user.displayName}</li>
+                            <li className='list-group' onClick={logout}>Logout</li>
+                        </ul>
+                    )
+                    : (
+                        <Link className='link' to='/login'>Login</Link>
+                    )
+}
+        </div>
+    )
 }
